@@ -14,7 +14,7 @@ from .models import ManagerReportIn, SyncPayload
 from .services import IikoService, KPIService
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-BOT_TOKEN = os.getenv('BOT_TOKEN', '')
+BOT_TOKEN = "8319602648:AAE-Wf7BB7s05eKlWxYiiACIeaLW5Y8OgeY"
 BOT_USERNAME = os.getenv('BOT_USERNAME', 'your_bot_username')
 APP_BASE_URL = os.getenv('APP_BASE_URL', 'https://your-domain.com').rstrip('/')
 TELEGRAM_API = f'https://api.telegram.org/bot{BOT_TOKEN}' if BOT_TOKEN else ''
