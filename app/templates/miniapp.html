@@ -1,35 +1,69 @@
-<div class="action-top">
-                    <h3 class="action-name">Сводка дня</h3>
-                    <div class="action-icon">📊</div>
-                </div>
-                <p class="action-desc">Короткая аналитика по выручке, гостям, среднему чеку и персоналу.</p>
-                <div class="btn-row">
-                    <button class="btn btn-primary">Смотреть</button>
-                    <button class="btn btn-secondary">Экспорт</button>
-                </div>
-            </div>
-        </div>
+HTML
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taom Mini App</title>
+
+    <!-- ОБЯЗАТЕЛЬНО -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: -apple-system, sans-serif;
+            background: #f5f7fb;
+        }
+
+        .app {
+            padding: 16px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .btn {
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            background: black;
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="app">
+
+    <div class="card">
+        <div class="title">Mini App работает ✅</div>
+        <p>ID: {{ tg_user_id }}</p>
+        <p>Имя: {{ full_name }}</p>
     </div>
 
-    <div class="section">
-        <h2 class="section-title">Блоки</h2>
-        <div class="mini-list">
-            <div class="mini-item">
-                <div class="mini-item-title">Официанты</div>
-                <div class="mini-item-sub">Показатели по персоналу, продажи и эффективность.</div>
-            </div>
-            <div class="mini-item">
-                <div class="mini-item-title">KPI менеджера</div>
-                <div class="mini-item-sub">Оценка открытия, чистоты, дисциплины и срочных инцидентов.</div>
-            </div>
-            <div class="mini-item">
-                <div class="mini-item-title">iiko Sync</div>
-                <div class="mini-item-sub">Подключение и синхронизация данных из iiko.</div>
-            </div>
-        </div>
+    <div class="card">
+        <div class="title">Сводка дня</div>
+        <button class="btn">Смотреть</button>
     </div>
 
-    <div class="footer-space"></div>
 </div>
+
+<script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+</script>
+
 </body>
 </html>
