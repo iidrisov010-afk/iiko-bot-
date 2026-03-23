@@ -29,19 +29,17 @@ app.mount(
 )
 
 templates = Jinja2Templates(directory=str(BASE_DIR / "app" / "templates"))
-
-iiko_service = IikoService()
-kpi_service = KPIService()
 @app.get("/miniapp", response_class=HTMLResponse)
 def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
-    return templates.TemplateResponse(
-        "miniapp.html",
-        {
-            "request": request,
-            "tg_user_id": tg_user_id or "",
-            "full_name": full_name or "",
-        }
-    )
+    context = {
+        "request": request,
+        "tg_user_id": tg_user_id or "",
+        "full_name": full_name or "",
+    }
+    return templates.TemplateResponse("miniapp.html", context)
+iiko_service = IikoService()
+kpi_service = KPIService()
+
 def send_message(chat_id: int, text: str, reply_markup: Optional[dict] = None) -> None:
     payload = {
         "chat_id": chat_id,
