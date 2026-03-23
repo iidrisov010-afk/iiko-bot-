@@ -1,4 +1,4 @@
-import os
+   import os
 from datetime import date, datetime
 from pathlib import Path
 from typing import Optional
@@ -29,17 +29,9 @@ app.mount(
 )
 
 templates = Jinja2Templates(directory=str(BASE_DIR / "app" / "templates"))
-@app.get("/miniapp", response_class=HTMLResponse)
-def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
-    context = {
-        "request": request,
-        "tg_user_id": tg_user_id or "",
-        "full_name": full_name or "",
-    }
-    return templates.TemplateResponse("miniapp.html", context)
-iiko_service = IikoService()
-kpi_service = KPIService()
 
+iiko_service = IikoService()
+kpi_service = KPIService() 
 def send_message(chat_id: int, text: str, reply_markup: Optional[dict] = None) -> None:
     payload = {
         "chat_id": chat_id,
@@ -47,4 +39,12 @@ def send_message(chat_id: int, text: str, reply_markup: Optional[dict] = None) -
     }
     if reply_markup:
         payload["reply_markup"] = reply_markup
-    requests.post(f"{TELEGRAM_API}/sendMessage", json=payload, timeout=15)    
+    requests.post(f"{TELEGRAM_API}/sendMessage", json=payload, timeout=15)
+@app.get("/miniapp", response_class=HTMLResponse)
+def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
+    context = {
+        "request": request,
+        "tg_user_id": tg_user_id or "",
+        "full_name": full_name or "",
+    }
+    return templates.TemplateResponse("miniapp.html", context) 
