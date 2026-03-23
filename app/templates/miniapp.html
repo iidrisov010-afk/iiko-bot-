@@ -1,62 +1,25 @@
-HTML
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taom Mini App</title>
+    <title>Taom</title>
 
-    <!-- ОБЯЗАТЕЛЬНО -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, sans-serif;
-            background: #f5f7fb;
-        }
-
-        .app {
-            padding: 16px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-
-        .title {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .btn {
-            padding: 12px;
-            border-radius: 12px;
-            border: none;
-            background: black;
-            color: white;
-            width: 100%;
-            margin-top: 10px;
-        }
-    </style>
 </head>
 
-<body>
-<div class="app">
+<body style="margin:0; font-family:sans-serif; background:#f5f7fb;">
 
-    <div class="card">
-        <div class="title">Mini App работает ✅</div>
-        <p>ID: {{ tg_user_id }}</p>
-        <p>Имя: {{ full_name }}</p>
-    </div>
+<div style="padding:20px">
 
-    <div class="card">
-        <div class="title">Сводка дня</div>
-        <button class="btn">Смотреть</button>
-    </div>
+    <h1>Mini App работает ✅</h1>
+
+    <p>ID: {{ tg_user_id }}</p>
+    <p>Имя: {{ full_name }}</p>
+
+    <button style="padding:12px; background:black; color:white; border:none; border-radius:10px;">
+        Кнопка тест
+    </button>
 
 </div>
 
