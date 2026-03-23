@@ -117,22 +117,9 @@ def startup_event() -> None:
     init_db()
 
 
-@app.get('/', response_class=HTMLResponse)
-def home(request: Request):
-    sales = query_all('SELECT * FROM iiko_sales_daily ORDER BY synced_at DESC LIMIT 7')
-    kpi = query_all('SELECT * FROM kpi_results ORDER BY created_at DESC LIMIT 10')
-    reports = query_all('SELECT * FROM daily_reports ORDER BY created_at DESC LIMIT 10')
-    return templates.TemplateResponse(
-        'index.html',
-        {
-            'request': request,
-            'sales': sales,
-            'kpi': kpi,
-            'reports': reports,
-            'bot_username': BOT_USERNAME,
-            'app_base_url': APP_BASE_URL,
-        },
-    )
+@app.get("/")
+def home():
+    return {"status": "ok", "bot": "running"}
 
 
 @app.get('/miniapp', response_class=HTMLResponse)
