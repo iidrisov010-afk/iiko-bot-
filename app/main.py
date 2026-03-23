@@ -123,33 +123,15 @@ def home():
 
 
 @app.get('/miniapp', response_class=HTMLResponse)
-def miniapp(tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
-    return f"""
-    <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Taom</title>
-        <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    </head>
-    <body style="margin:0; font-family:sans-serif; background:#f5f7fb;">
-        <div style="padding:20px">
-            <h1>Mini App работает ✅</h1>
-            <p>ID: {tg_user_id}</p>
-            <p>Имя: {full_name}</p>
-            <button style="padding:12px; background:black; color:white; border:none; border-radius:10px;">
-                Кнопка тест
-            </button>
-        </div>
-
-        <script>
-            const tg = window.Telegram.WebApp;
-            tg.expand();
-        </script>
-    </body>
-    </html>
-    """
+def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
+    return templates.TemplateResponse(
+        'miniapp.html',
+        {
+            'request': request,
+            'tg_user_id': tg_user_id or '',
+            'full_name': full_name or ''
+        }
+    )
 
 
 @app.post('/api/report')
