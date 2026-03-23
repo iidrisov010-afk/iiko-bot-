@@ -3,66 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taom Mini App</title>
-
+    <title>Taom</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, sans-serif;
-            background: #f5f7fb;
-            padding: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-
-        h1 {
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .btn {
-            margin-top: 15px;
-            padding: 12px;
-            border: none;
-            border-radius: 12px;
-            width: 100%;
-            font-size: 16px;
-        }
-
-        .primary {
-            background: black;
-            color: white;
-        }
-
-        .secondary {
-            background: #eee;
-        }
-    </style>
 </head>
+<body style="margin:0; font-family:sans-serif; background:#f5f7fb;">
+    <div style="padding:20px">
+        <h1>Mini App работает ✅</h1>
+        <p>ID: {{ tg_user_id }}</p>
+        <p>Имя: {{ full_name }}</p>
+    </div>
 
-<body>
-
-<div class="card">
-    <h1>Сводка дня</h1>
-
-    <p>ID: {{ tg_user_id }}</p>
-    <p>Имя: {{ full_name }}</p>
-
-    <button class="btn primary">Смотреть</button>
-    <button class="btn secondary">Экспорт</button>
-</div>
-
-<script>
-    const tg = window.Telegram.WebApp;
-    tg.expand();
-</script>
-
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.expand();
+    </script>
 </body>
 </html>
