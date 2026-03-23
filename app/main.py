@@ -122,7 +122,7 @@ def home():
     return {"status": "ok", "bot": "running"}
 
 
-  @app.get('/miniapp', response_class=HTMLResponse)
+ @app.get('/miniapp', response_class=HTMLResponse)
 def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
     return templates.TemplateResponse(
         'miniapp.html',
