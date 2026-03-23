@@ -22,8 +22,8 @@ TELEGRAM_API = f'https://api.telegram.org/bot{BOT_TOKEN}' if BOT_TOKEN else ''
 app = FastAPI(title='iiko Telegram Mini App v2')
 app.mount('/static', StaticFiles(directory=str(BASE_DIR / 'app' / 'static')), name='static')
 templates = Jinja2Templates(directory=str(BASE_DIR / 'app' / 'templates'))
-iiko_service = IikoService()
-kpi_service = KPIService()
+iiko_service = None
+kpi_service = None
 
 
 def init_db() -> None:
