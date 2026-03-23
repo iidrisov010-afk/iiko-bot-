@@ -123,16 +123,15 @@ def home():
 
 
 @app.get('/miniapp', response_class=HTMLResponse)
-def miniapp(tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
-    return f"""
-    <html>
-        <body>
-            <h1>Mini App работает ✅</h1>
-            <p>ID: {tg_user_id}</p>
-            <p>Имя: {full_name}</p>
-        </body>
-    </html>
-    """
+def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
+    return templates.TemplateResponse(
+        'miniapp.html',
+        {
+            'request': request,
+            'tg_user_id': tg_user_id or '',
+            'full_name': full_name or ''
+        },
+    )
 
 
 @app.post('/api/report')
