@@ -12,10 +12,37 @@
         <p>ID: {{ tg_user_id }}</p>
         <p>Имя: {{ full_name }}</p>
     </div>
+<!-- ФОРМА ОТЧЁТА -->
+<div style="margin:20px; background:white; padding:16px; border-radius:16px;">
 
+    <h2>Отчёт смены</h2>
+
+    <label>Гостей</label><br>
+    <input id="guests" type="number" placeholder="Например: 120" style="width:100%; padding:10px; margin:5px 0 10px;"><br>
+
+    <label>Средний чек (сум)</label><br>
+    <input id="avg" type="number" placeholder="Например: 85000" style="width:100%; padding:10px; margin:5px 0 10px;"><br>
+
+    <label>Комментарий</label><br>
+    <textarea id="comment" placeholder="Что было за смену..." style="width:100%; padding:10px; margin:5px 0 10px;"></textarea>
+
+    <button onclick="sendReport()" style="width:100%; padding:12px; background:black; color:white; border:none; border-radius:10px;">
+        Отправить отчёт
+    </button>
+
+</div>
     <script>
         const tg = window.Telegram.WebApp;
         tg.expand();
     </script>
+<script>
+function sendReport() {
+    const guests = document.getElementById('guests').value;
+    const avg = document.getElementById('avg').value;
+    const comment = document.getElementById('comment').value;
+
+    alert("Отчёт отправлен ✅\nГости: " + guests + "\nСредний чек: " + avg);
+}
+</script>
 </body>
 </html>
