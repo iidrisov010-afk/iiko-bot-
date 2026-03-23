@@ -114,7 +114,7 @@ def send_message(chat_id: int, text: str, reply_markup: Optional[dict] = None) -
 
 @app.on_event('startup')
 def startup_event() -> None:
-    init_db()
+    pass
 
 
 @app.get("/")
