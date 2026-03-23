@@ -130,7 +130,7 @@ def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optio
             'request': request,
             'tg_user_id': tg_user_id or '',
             'full_name': full_name or ''
-        },
+        }
     )
 
 
