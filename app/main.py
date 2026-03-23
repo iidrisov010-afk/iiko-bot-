@@ -9,6 +9,8 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
+templates = Jinja2Templates(directory="app/templates")
+
 from .db import execute, query_all, query_one
 from .models import ManagerReportIn, SyncPayload
 from .services import IikoService, KPIService
