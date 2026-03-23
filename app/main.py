@@ -40,7 +40,7 @@ def miniapp(request: Request, tg_user_id: Optional[int] = None, full_name: Optio
             "request": request,
             "tg_user_id": tg_user_id or "",
             "full_name": full_name or "",
-        },
+        }
     )
 def send_message(chat_id: int, text: str, reply_markup: Optional[dict] = None) -> None:
     payload = {
