@@ -9,23 +9,22 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-templates = Jinja2Templates(directory="app/templates")
-
 from .db import execute, query_all, query_one
 from .models import ManagerReportIn, SyncPayload
 from .services import IikoService, KPIService
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-BOT_TOKEN = "8319602648:AAHEuAd2etwwJMVuz2JlQgBHYe27DOebAy4"
+BOT_TOKEN = "ТВОЙ_ТОКЕН"
 BOT_USERNAME = "TAOM_TEAMUZBOT"
-APP_BASE_URL ="https://iiko-bot.onrender.com"
-TELEGRAM_API = f'https://api.telegram.org/bot{BOT_TOKEN}' if BOT_TOKEN else ''
+APP_BASE_URL = "https://iiko-bot.onrender.com"
+TELEGRAM_API = f"https://api.telegram.org/bot{BOT_TOKEN}" if BOT_TOKEN else ""
 
-app = FastAPI(title='iiko Telegram Mini App v2')
+app = FastAPI(title="iiko Telegram Mini App v2")
 app.mount('/static', StaticFiles(directory=str(BASE_DIR / 'app' / 'static')), name='static')
 templates = Jinja2Templates(directory=str(BASE_DIR / 'app' / 'templates'))
-iiko_service = None
-kpi_service = None
+
+iiko_service = IikoService()
+kpi_service = KPIService()
 
 
 def init_db() -> None:
