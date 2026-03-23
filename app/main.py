@@ -231,7 +231,7 @@ def dashboard(branch_name: Optional[str] = None, business_date: Optional[str] = 
     }
 
 
-@app.post('/telegram/webhook')
+@app.post("/webhook")
 async def telegram_webhook(request: Request):
     update = await request.json()
     message = update.get('message', {})
