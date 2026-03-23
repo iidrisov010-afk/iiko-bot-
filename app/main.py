@@ -404,6 +404,7 @@ def miniapp(tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
         </div>
 
         <script>
+            <script>
             const tg = window.Telegram.WebApp;
             tg.expand();
 
@@ -428,44 +429,42 @@ def miniapp(tg_user_id: Optional[int] = None, full_name: Optional[str] = None):
                 alert('Экспорт пока в разработке');
             }}
 
-            async function sendReport() {
-    const guests = document.getElementById('guests').value;
-    const avg = document.getElementById('avg').value;
-    const comment = document.getElementById('comment').value;
+            async function sendReport() {{
+                const guests = document.getElementById('guests').value;
+                const avg = document.getElementById('avg').value;
+                const comment = document.getElementById('comment').value;
 
-    if (!guests || !avg) {
-        alert("Заполни гостей и средний чек");
-        return;
-    }
+                if (!guests || !avg) {{
+                    alert("Заполни гостей и средний чек");
+                    return;
+                }}
 
-    try {
-        const response = await fetch("/api/report", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                telegram_user_id: {{ tg_user_id }},
-                manager_name: "{{ full_name }}",
-                guests_count: Number(guests),
-                avg_check: Number(avg),
-                comment_text: comment
-            })
-        });
+                try {{
+                    const response = await fetch("/api/report", {{
+                        method: "POST",
+                        headers: {{
+                            "Content-Type": "application/json"
+                        }},
+                        body: JSON.stringify({{
+                            telegram_user_id: {tg_user_id or 0},
+                            manager_name: "{full_name or ''}",
+                            guests_count: Number(guests),
+                            avg_check: Number(avg),
+                            comment_text: comment
+                        }})
+                    }});
 
-        if (response.ok) {
-            alert("Отчёт сохранён ✅");
-        } else {
-            alert("Ошибка сервера ❌");
-        }
-
-    } catch (e) {
-        alert("Ошибка соединения ❌");
-    }
-}
+                    if (response.ok) {{
+                        alert("Отчёт сохранён ✅");
+                    }} else {{
+                        alert("Ошибка сервера ❌");
+                    }}
+                }} catch (e) {{
+                    alert("Ошибка соединения ❌");
+                }}
+            }}
         </script>
     </body>
     </html>
     """
     return HTMLResponse(content=html)
-    return templates.TemplateResponse("miniapp.html", context) 
